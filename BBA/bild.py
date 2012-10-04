@@ -34,9 +34,26 @@ class Bild:
     Basic image class. All other images inherit from this class.
     """
     def __init__(self, pfad, **kwargs):
-        """
-        Initialize attributes
-        pfad = complete file path for opening image
+        """ Initialize attributes
+        
+        and example docstring
+        Args:
+            pfad (str): File path of image
+        
+        Kwargs:
+            none (yet)
+            
+        Returns:
+            nothing
+            
+        Creates:
+            self.att (dic): empty dictionary for holding image attributes
+            
+        Raises:
+            nothing
+            
+        Use me if you want to create an image
+        
         """
         self.att = {} #attribute directory
         #checks if pfad is valid
