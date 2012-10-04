@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dSAP</class>
+ <widget class="QMainWindow" name="dSAP">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>dSAP</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>258</width>
+      <height>223</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QListWidget" name="Matlist"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="OpenFiles">
+       <property name="text">
+        <string>Open Matlab Files</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>OpenFiles</sender>
+   <signal>clicked()</signal>
+   <receiver>dSAP</receiver>
+   <slot>openMatFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>155</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>142</x>
+     <y>296</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>openMatFiles()</slot>
+ </slots>
+</ui>

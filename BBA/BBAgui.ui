@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BBA</class>
+ <widget class="QMainWindow" name="BBA">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>494</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BBA</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="PlotButton">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>370</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Plot totalInt</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="Nullhoehe">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>20</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>2000</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Nullhoehe_label">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>20</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Nullhoehe</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Flammenmitte_label">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>60</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Flammenmitte</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="Flammenmitte">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>60</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>2000</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="GradZwischenBildern_label">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>110</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Grad zwischen Bildern</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="GradZwischenBildern">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>110</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>524</width>
+      <height>411</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QListWidget" name="ImageList"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="OpenImages">
+         <property name="text">
+          <string>Open Images</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="currentImage"/>
+       </item>
+       <item>
+        <widget class="QGraphicsView" name="BildViewer"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <zorder>Auswertung</zorder>
+   <zorder>x</zorder>
+   <zorder>y</zorder>
+   <zorder>result</zorder>
+   <zorder>OpenImages</zorder>
+   <zorder>ImageList</zorder>
+   <zorder>currentImage</zorder>
+   <zorder>BildViewer</zorder>
+   <zorder>ImageList</zorder>
+   <zorder>PlotButton</zorder>
+   <zorder>Nullhoehe</zorder>
+   <zorder>Nullhoehe_label</zorder>
+   <zorder>Flammenmitte_label</zorder>
+   <zorder>Flammenmitte</zorder>
+   <zorder>GradZwischenBildern_label</zorder>
+   <zorder>GradZwischenBildern</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMein_test">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionOpen_Images"/>
+    <addaction name="actionOpen_Image_directory"/>
+    <addaction name="actionClose"/>
+   </widget>
+   <addaction name="menuMein_test"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_Images">
+   <property name="text">
+    <string>Open Images</string>
+   </property>
+  </action>
+  <action name="actionOpen_Image_directory">
+   <property name="text">
+    <string>Open Image directory</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionClose</sender>
+   <signal>activated()</signal>
+   <receiver>BBA</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>589</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OpenImages</sender>
+   <signal>clicked()</signal>
+   <receiver>BBA</receiver>
+   <slot>openImages()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>38</x>
+     <y>416</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>78</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ImageList</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>BBA</receiver>
+   <slot>filepathClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>186</x>
+     <y>103</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>175</x>
+     <y>445</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PlotButton</sender>
+   <signal>clicked()</signal>
+   <receiver>BBA</receiver>
+   <slot>plot_totalInt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>607</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>142</x>
+     <y>493</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>raysFunc()</slot>
+  <slot>openImages()</slot>
+  <slot>filepathClicked()</slot>
+  <slot>plot_totalInt()</slot>
+ </slots>
+</ui>
