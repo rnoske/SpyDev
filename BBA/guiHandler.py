@@ -10,7 +10,13 @@ from pylab import *              # Matplotlib's pylab interface
 ion()                            # Turned on Matplotlib's interactive mode
 
 class guiHandler(QtGui.QMainWindow):
+    """ Handler for function calls from gui
+    
+    """
     def __init__(self, parent=None):
+        """ Simple initializsation
+        
+        """
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_BBA()
         self.ui.setupUi(self)
@@ -21,11 +27,19 @@ class guiHandler(QtGui.QMainWindow):
         #QtCore.QObject.connect(self.ui.pushButton, QtCore.SIGNAL("clicked()"), self.raysFunc )
     
     def raysFunc(self):
+        """ my testfunc
+        
+        now obsolete more or less
+        
+        """
         x = int(self.ui.lineEditX.text())
         y = int(self.ui.lineEditY.text())
         self.ui.lineEditZ.setText(str(x+y))
 
     def openImages(self):
+        """ Responds to dialog to open images
+        
+        """
         filepaths = QtGui.QFileDialog.getOpenFileNames(self, 
                                                       'Select one or more files to open',
                                                       'D:\Raimund Buero\Python', 
@@ -39,6 +53,9 @@ class guiHandler(QtGui.QMainWindow):
             
 
     def filepathClicked(self):
+        """ Responds to clicked image
+        
+        """
         _tmp = self.ui.ImageList.currentItem()
         _tmp = QtGui.QListWidgetItem.text(_tmp)
         #print _tmp
@@ -47,6 +64,12 @@ class guiHandler(QtGui.QMainWindow):
         self.update_ImageDisplay(_fp)
         
     def update_ImageDisplay(self, pfad):
+        """ updates the Image Display
+        
+        is called from self.filepathClicked()
+        pfad (str): filepath for image to be displayed
+        
+        """
         image = QtGui.QPixmap(pfad)
         view = self.ui.BildViewer
         scene = QtGui.QGraphicsScene()
@@ -56,6 +79,9 @@ class guiHandler(QtGui.QMainWindow):
         view.show()
         
     def plot_totalInt(self):
+        """ Responds to plot total Int call
+        
+        """
         _X, _Y = self.bba.get_totalInt_list()
         plt.plot(_X, _Y)
         plt.ylabel('Total Int')

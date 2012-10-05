@@ -65,16 +65,16 @@ class Bild:
                             pfad)
     
     def calc_name(self):
-        """
-        Sets a name for the image.
+        """ Set a name for the image.
+        
         """
         namen = str(self.pfad).split(os.sep) 
         name = namen.pop()
         self.att['name']=name
         
     def open_image(self):
-        """
-        Opens and returns an PIL image
+        """ Opens and returns an PIL image
+        
         """
         _fp = open(self.pfad, 'rb')
         img = PILImage.open(_fp)
@@ -83,15 +83,20 @@ class Bild:
         return img
         
     def create_array(self):
-        """
-        creates and numpy array from open image
-        returns np.array
+        """ Create and numpy array from open image
+        
+        Returns:
+            np.array
+            
         """
         self.att['hoehe'] = np.array(self.open_image()).shape[0]
         self.att['breite'] = np.array(self.open_image()).shape[1]
         return np.array(self.open_image())
         
     def calc_totalInt(self):
+        """ Calculate total Pixel count of image
+        
+        """
         _arr = self.create_array()
         self.att['totalInt'] = _arr.sum()
         _apx = self.att['hoehe'] * self.att['breite']

@@ -5,12 +5,12 @@ from bild import Bild
 import collections
 
 class bilderarray():
-    """
-    Class for holding and managing an array full of Bild instances
+    """ Class for holding and managing an array full of Bild instances
+    
     """
     def __init__(self, **kwargs):
-        """
-        creates an array full of images out of bilderPfadListe
+        """ Creates an array full of images out of bilderPfadListe
+        
         """
         self.barr = []
         self.nameList = collections.OrderedDict() #noch irgendwie doppelt gemoppelt
@@ -21,8 +21,10 @@ class bilderarray():
         
         
     def add_image_to_array(self, pfad):
-        """
-        adds an image (as specified in the file path) to the image array
+        """ Add given image to array
+        
+        prad (str): complete file path to image
+        
         """
         try:
             _tmpBild = Bild(pfad)
@@ -32,8 +34,8 @@ class bilderarray():
             logging.warning('Bild konnte nicht zum array hinzugefuegt werden')
             
     def calc_name(self):
-        """ 
-        calculates name for every image in the array
+        """  Calculates name for every image in the array
+        
         """
         for entry in self.barr:
             entry.calc_name()
@@ -41,16 +43,18 @@ class bilderarray():
             
         
     def calc_totalInt(self):
-        """
-        calculates total Intensity for every image in the array
+        """ Calculate total Intensity for every image in the array
+        
         """
         for entry in self.barr:
             entry.calc_totalInt()
         
     def get_attList(self):
-        """
-        Returns a numbered array with all image attributes in one row
-        number, name, totalint
+        """ Get attributes of images in the array
+        
+        Return:
+            array: 3 columns; number, name, totalInt
+            
         """
         self.calc_totalInt()
         _tmp = []
