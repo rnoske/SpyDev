@@ -45,7 +45,7 @@ class guiHandler(QtGui.QMainWindow):
                                                       'D:\Raimund Buero\Python', 
                                                       'Images (*.bmp *png *jpg)')
         for filepath in filepaths:
-            self.bba.add_image_ba(str(filepath))
+            self.bba.add_image_bd(str(filepath))
         _nL = self.bba.get_imageName_list()
         for name in _nL:
             _fp = QtGui.QListWidgetItem(name, self.ui.ImageList)
@@ -83,9 +83,12 @@ class guiHandler(QtGui.QMainWindow):
         
         """
         _X, _Y = self.bba.get_totalInt_list()
+        print _X, _Y
+        """
         plt.plot(_X, _Y)
         plt.ylabel('Total Int')
         plt.show()
+        """
 
 
 if __name__ == "__main__":

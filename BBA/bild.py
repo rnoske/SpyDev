@@ -27,12 +27,18 @@ import numpy as np # NumPy (multidimensional arrays, linear algebra, ...)
 #ion()                            # Turned on Matplotlib's interactive mode
 
 from PIL import Image as PILImage
+import threading
 
 #Actual code
 class Bild:
+    """ Basic image class. All other images inherit from this class.
+    
+    Creates:
+        bid (int) = bild id/number
     """
-    Basic image class. All other images inherit from this class.
-    """
+    lock = threading.Lock()
+    bid_count = 0
+    
     def __init__(self, pfad, **kwargs):
         """ Initialize attributes
         
@@ -60,6 +66,10 @@ class Bild:
         if os.path.exists(pfad) == True:
             self.pfad = pfad
             logging.info('Image pfad was set: %s', pfad)
+            self.calc_name()
+            with Bild.lock:
+                self.att['bid'] = Bild.bid_count
+                Bild.bid_count += 1
         else:
             logging.warning('No file found under pfad %s. No image was opened',
                             pfad)
