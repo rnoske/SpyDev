@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>494</height>
+    <width>696</width>
+    <height>457</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="PlotButton">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>370</y>
+      <x>530</x>
+      <y>10</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -27,100 +27,7 @@
      <string>Plot totalInt</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="Nullhoehe">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>20</y>
-      <width>42</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>2000</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Nullhoehe_label">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>20</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Nullhoehe</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Flammenmitte_label">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>60</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Flammenmitte</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="Flammenmitte">
-    <property name="geometry">
-     <rect>
-      <x>740</x>
-      <y>60</y>
-      <width>42</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>2000</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="GradZwischenBildern_label">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>110</y>
-      <width>161</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Grad zwischen Bildern</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="GradZwischenBildern">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>110</y>
-      <width>42</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>360</number>
-    </property>
-   </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -156,29 +63,15 @@
      </item>
     </layout>
    </widget>
-   <zorder>Auswertung</zorder>
-   <zorder>x</zorder>
-   <zorder>y</zorder>
-   <zorder>result</zorder>
-   <zorder>OpenImages</zorder>
-   <zorder>ImageList</zorder>
-   <zorder>currentImage</zorder>
-   <zorder>BildViewer</zorder>
-   <zorder>ImageList</zorder>
+   <zorder>layoutWidget</zorder>
    <zorder>PlotButton</zorder>
-   <zorder>Nullhoehe</zorder>
-   <zorder>Nullhoehe_label</zorder>
-   <zorder>Flammenmitte_label</zorder>
-   <zorder>Flammenmitte</zorder>
-   <zorder>GradZwischenBildern_label</zorder>
-   <zorder>GradZwischenBildern</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>696</width>
      <height>21</height>
     </rect>
    </property>
@@ -189,6 +82,7 @@
     <addaction name="actionOpen_Images"/>
     <addaction name="actionOpen_Image_directory"/>
     <addaction name="actionClose"/>
+    <addaction name="actionOpen_Settings"/>
    </widget>
    <addaction name="menuMein_test"/>
   </widget>
@@ -208,6 +102,11 @@
     <string>Close</string>
    </property>
   </action>
+  <action name="actionOpen_Settings">
+   <property name="text">
+    <string>Open Settings</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -218,8 +117,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>399</x>
-     <y>589</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -271,7 +170,23 @@
     </hint>
     <hint type="destinationlabel">
      <x>142</x>
-     <y>493</y>
+     <y>456</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpen_Settings</sender>
+   <signal>activated()</signal>
+   <receiver>BBA</receiver>
+   <slot>openSettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>228</y>
     </hint>
    </hints>
   </connection>
@@ -281,5 +196,6 @@
   <slot>openImages()</slot>
   <slot>filepathClicked()</slot>
   <slot>plot_totalInt()</slot>
+  <slot>openSettings()</slot>
  </slots>
 </ui>

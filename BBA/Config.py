@@ -5,7 +5,7 @@ class Config():
     
     """
     
-    def __init__(self, filename):
+    def __init__(self, filename = 'Settings.ini'):
         """ Pick config file
         
         filename (str): complete file path to config file
@@ -51,7 +51,7 @@ class Config():
         
         """
         cfgfile = open(self.filename, 'w')
-        for key, value in self.cfgdict.items():
+        for key, value in cfgdict.items():
             self.cfg.set(section, key, value) 
         self.cfg.write(cfgfile)
         cfgfile.close()

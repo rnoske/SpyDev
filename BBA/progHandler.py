@@ -7,7 +7,7 @@ Excepts commands from guiHandler und translates them to
 """
 #from bilderarray import bilderarray
 from bilderdict import bilderdict
-
+from Config import Config
 
 class BBA:
     """ Programm class that handles calls from guihandler
@@ -19,6 +19,7 @@ class BBA:
         """
         #self.ba = bilderarray()
         self.bd = bilderdict()
+        self.cf = Config()
         
     def add_image_bd(self, filepath):
         """ Add one image to bilderarray class
@@ -56,4 +57,19 @@ class BBA:
             _tmpX.append(entry[0])
             _tmpY.append(entry[2])
         return _tmpX, _tmpY
+        
+    #Settingsui handling
+    def get_settings(self, section = 'FlameParameters'):
+        """ Return an dictionaray of current Settings
+        
+        """
+        self.cf.getConfigOptions(section) #reads config
+        return self.cf.cfgdict #created dictionaray
+        
+    def set_settings(self, cfgdict, section = 'FlameParameters'):
+        """ Save the dictionary to file
+        
+        """
+        print cfgdict
+        self.cf.writeConfigOptions(section, cfgdict)
         

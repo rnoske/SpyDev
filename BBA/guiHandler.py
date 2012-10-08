@@ -2,7 +2,9 @@
 
 from PyQt4 import QtGui, QtCore
 from BBAgui import Ui_BBA
+from Settingsui import Ui_Settings
 from progHandler import BBA
+import logging
 import sys
 import matplotlib as mpl         # Matplotlib (2D/3D plotting library)
 import matplotlib.pyplot as plt  # Matplotlib's pyplot: MATLAB-like syntax
@@ -40,10 +42,13 @@ class guiHandler(QtGui.QMainWindow):
         """ Responds to dialog to open images
         
         """
+        _msg = 'Select one or more images to open'
+        _prepath = 'D:/Raimund Buero/Python/testbilder'
+        _Imagetypes = 'Images (*.bmp *.png *.jpg)'
         filepaths = QtGui.QFileDialog.getOpenFileNames(self, 
-                                                      'Select one or more files to open',
-                                                      'D:\Raimund Buero\Python', 
-                                                      'Images (*.bmp *png *jpg)')
+                                                      _msg,
+                                                      _prepath, 
+                                                      _Imagetypes)
         for filepath in filepaths:
             self.bba.add_image_bd(str(filepath))
         _nL = self.bba.get_imageName_list()
@@ -83,12 +88,78 @@ class guiHandler(QtGui.QMainWindow):
         
         """
         _X, _Y = self.bba.get_totalInt_list()
-        print _X, _Y
-        """
         plt.plot(_X, _Y)
         plt.ylabel('Total Int')
         plt.show()
+        
+    #Settings function
+    def openSettings(self):
+        """ Responds to open Settings call from Settings.ui
+        
         """
+        QtGui.QWidget.__init__(self, parent = None)
+        self.sui = Ui_Settings()
+        self.sui.setupUi(self)
+        self.show()
+        
+        #Initialize values by reading Settings.ini
+        self.loadSettings()
+
+    def loadSettings(self):
+        """ Respond to load settings call
+        
+        Reads values out of Settings.ini and sends them to gui
+        
+        """
+        _setDict = self.bba.get_settings() #gets dict
+        #Write to GUI
+        try:
+            #Nullpunkt
+            _val = int(_setDict['nullpunkt'])
+            self.sui.Nullhoehe.setValue(_val)
+            #Flammenmitte
+            _val = int(_setDict['flammenmitte'])
+            self.sui.Flammenmitte.setValue(_val)
+            #Grad zwischen den Bildern
+            _val = int(_setDict['gradprobild'])
+            self.sui.GradZwischenBildern.setValue(_val)
+            #Aufloesung
+            _val = float(_setDict['aufloesung'])
+            self.sui.Aufloesung.setValue(_val)
+            #Workspace
+            _val = _setDict['workspace']
+            self.sui.WorkspaceShow_label.setText(_val)
+        except:
+            logging.ERROR('Settings konnten nicht gesetzt werden')
+    
+    def saveSettings(self):
+        """ Save current Settings in Settings.ini
+        
+        """
+        _setDict = {}
+        try:
+            _setDict['nullpunkt'] = str(self.sui.Nullhoehe.value())
+            _setDict['flammenmitte'] = str(self.sui.Flammenmitte.value())
+            _setDict['gradprobild'] = str(self.sui.GradZwischenBildern.value())
+            _setDict['aufloesung'] = str(self.sui.Aufloesung.value())
+            _tmp = self.sui.WorkspaceShow_label.text()
+            _tmp = str(_tmp)
+            _setDict['workspace'] = _tmp
+        except:
+            logging.error('Settings konnten nicht von ui gelesen werden')
+        
+        try:
+            self.bba.set_settings(_setDict)
+        except:
+            logging.error('Settings konnten nicht geschrieben werden')
+    
+    def chooseWorkspace(self):
+        """ File Dialog to choose current workspace
+        
+        """
+        #_file = QtGui.QFileDialog.getOpenFileName(self, _msg, _prepath, _type)
+        _dir = QtGui.QFileDialog.getExistingDirectory(self, "Select Directory")
+        self.sui.WorkspaceShow_label.setText(_dir)
 
 
 if __name__ == "__main__":

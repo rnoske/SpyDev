@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'BBAgui.ui'
 #
-# Created: Thu Sep 27 14:13:12 2012
+# Created: Mon Oct 08 10:58:56 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,39 +17,39 @@ except AttributeError:
 class Ui_BBA(object):
     def setupUi(self, BBA):
         BBA.setObjectName(_fromUtf8("BBA"))
-        BBA.resize(800, 494)
+        BBA.resize(696, 457)
         self.centralwidget = QtGui.QWidget(BBA)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.PlotButton = QtGui.QPushButton(self.centralwidget)
-        self.PlotButton.setGeometry(QtCore.QRect(560, 0, 151, 41))
+        self.PlotButton.setGeometry(QtCore.QRect(530, 10, 151, 41))
         self.PlotButton.setObjectName(_fromUtf8("PlotButton"))
-        self.widget = QtGui.QWidget(self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(0, 0, 524, 411))
-        self.widget.setObjectName(_fromUtf8("widget"))
-        self.horizontalLayout = QtGui.QHBoxLayout(self.widget)
+        self.layoutWidget = QtGui.QWidget(self.centralwidget)
+        self.layoutWidget.setGeometry(QtCore.QRect(0, 0, 524, 411))
+        self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setMargin(0)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.ImageList = QtGui.QListWidget(self.widget)
+        self.ImageList = QtGui.QListWidget(self.layoutWidget)
         self.ImageList.setObjectName(_fromUtf8("ImageList"))
         self.verticalLayout.addWidget(self.ImageList)
-        self.OpenImages = QtGui.QPushButton(self.widget)
+        self.OpenImages = QtGui.QPushButton(self.layoutWidget)
         self.OpenImages.setObjectName(_fromUtf8("OpenImages"))
         self.verticalLayout.addWidget(self.OpenImages)
         self.horizontalLayout.addLayout(self.verticalLayout)
         self.verticalLayout_2 = QtGui.QVBoxLayout()
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.currentImage = QtGui.QLineEdit(self.widget)
+        self.currentImage = QtGui.QLineEdit(self.layoutWidget)
         self.currentImage.setObjectName(_fromUtf8("currentImage"))
         self.verticalLayout_2.addWidget(self.currentImage)
-        self.BildViewer = QtGui.QGraphicsView(self.widget)
+        self.BildViewer = QtGui.QGraphicsView(self.layoutWidget)
         self.BildViewer.setObjectName(_fromUtf8("BildViewer"))
         self.verticalLayout_2.addWidget(self.BildViewer)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         BBA.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(BBA)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 696, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuMein_test = QtGui.QMenu(self.menubar)
         self.menuMein_test.setObjectName(_fromUtf8("menuMein_test"))
@@ -63,9 +63,12 @@ class Ui_BBA(object):
         self.actionOpen_Image_directory.setObjectName(_fromUtf8("actionOpen_Image_directory"))
         self.actionClose = QtGui.QAction(BBA)
         self.actionClose.setObjectName(_fromUtf8("actionClose"))
+        self.actionOpen_Settings = QtGui.QAction(BBA)
+        self.actionOpen_Settings.setObjectName(_fromUtf8("actionOpen_Settings"))
         self.menuMein_test.addAction(self.actionOpen_Images)
         self.menuMein_test.addAction(self.actionOpen_Image_directory)
         self.menuMein_test.addAction(self.actionClose)
+        self.menuMein_test.addAction(self.actionOpen_Settings)
         self.menubar.addAction(self.menuMein_test.menuAction())
 
         self.retranslateUi(BBA)
@@ -73,6 +76,7 @@ class Ui_BBA(object):
         QtCore.QObject.connect(self.OpenImages, QtCore.SIGNAL(_fromUtf8("clicked()")), BBA.openImages)
         QtCore.QObject.connect(self.ImageList, QtCore.SIGNAL(_fromUtf8("itemClicked(QListWidgetItem*)")), BBA.filepathClicked)
         QtCore.QObject.connect(self.PlotButton, QtCore.SIGNAL(_fromUtf8("clicked()")), BBA.plot_totalInt)
+        QtCore.QObject.connect(self.actionOpen_Settings, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.openSettings)
         QtCore.QMetaObject.connectSlotsByName(BBA)
 
     def retranslateUi(self, BBA):
@@ -83,6 +87,7 @@ class Ui_BBA(object):
         self.actionOpen_Images.setText(QtGui.QApplication.translate("BBA", "Open Images", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOpen_Image_directory.setText(QtGui.QApplication.translate("BBA", "Open Image directory", None, QtGui.QApplication.UnicodeUTF8))
         self.actionClose.setText(QtGui.QApplication.translate("BBA", "Close", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionOpen_Settings.setText(QtGui.QApplication.translate("BBA", "Open Settings", None, QtGui.QApplication.UnicodeUTF8))
 
 
 if __name__ == "__main__":
