@@ -83,6 +83,7 @@
     <addaction name="actionOpen_Image_directory"/>
     <addaction name="actionClose"/>
     <addaction name="actionOpen_Settings"/>
+    <addaction name="actionOpen_Plotter"/>
    </widget>
    <addaction name="menuMein_test"/>
   </widget>
@@ -105,6 +106,11 @@
   <action name="actionOpen_Settings">
    <property name="text">
     <string>Open Settings</string>
+   </property>
+  </action>
+  <action name="actionOpen_Plotter">
+   <property name="text">
+    <string>Open Plotter</string>
    </property>
   </action>
  </widget>
@@ -190,6 +196,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionOpen_Plotter</sender>
+   <signal>activated()</signal>
+   <receiver>BBA</receiver>
+   <slot>openPlotter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>228</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>raysFunc()</slot>
@@ -197,5 +219,6 @@
   <slot>filepathClicked()</slot>
   <slot>plot_totalInt()</slot>
   <slot>openSettings()</slot>
+  <slot>openPlotter()</slot>
  </slots>
 </ui>

@@ -10,6 +10,9 @@ import matplotlib as mpl         # Matplotlib (2D/3D plotting library)
 import matplotlib.pyplot as plt  # Matplotlib's pyplot: MATLAB-like syntax
 from pylab import *              # Matplotlib's pylab interface
 ion()                            # Turned on Matplotlib's interactive mode
+from Plotterui import Ui_Plotterui
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 
 class guiHandler(QtGui.QMainWindow):
     """ Handler for function calls from gui
@@ -160,7 +163,16 @@ class guiHandler(QtGui.QMainWindow):
         #_file = QtGui.QFileDialog.getOpenFileName(self, _msg, _prepath, _type)
         _dir = QtGui.QFileDialog.getExistingDirectory(self, "Select Directory")
         self.sui.WorkspaceShow_label.setText(_dir)
-
+    
+    #Plotter functions
+    def openPlotter(self):
+        """ Responds to open Plotter call from Plotter.ui
+        
+        """
+        QtGui.QWidget.__init__(self, parent = None)
+        self.pui = Ui_Plotterui()
+        self.pui.setupUi(self)
+        self.show()
 
 if __name__ == "__main__":
    app = QtGui.QApplication(sys.argv)

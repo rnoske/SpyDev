@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'BBAgui.ui'
 #
-# Created: Mon Oct 08 10:58:56 2012
+# Created: Mon Oct 08 14:06:28 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -65,10 +65,13 @@ class Ui_BBA(object):
         self.actionClose.setObjectName(_fromUtf8("actionClose"))
         self.actionOpen_Settings = QtGui.QAction(BBA)
         self.actionOpen_Settings.setObjectName(_fromUtf8("actionOpen_Settings"))
+        self.actionOpen_Plotter = QtGui.QAction(BBA)
+        self.actionOpen_Plotter.setObjectName(_fromUtf8("actionOpen_Plotter"))
         self.menuMein_test.addAction(self.actionOpen_Images)
         self.menuMein_test.addAction(self.actionOpen_Image_directory)
         self.menuMein_test.addAction(self.actionClose)
         self.menuMein_test.addAction(self.actionOpen_Settings)
+        self.menuMein_test.addAction(self.actionOpen_Plotter)
         self.menubar.addAction(self.menuMein_test.menuAction())
 
         self.retranslateUi(BBA)
@@ -77,6 +80,7 @@ class Ui_BBA(object):
         QtCore.QObject.connect(self.ImageList, QtCore.SIGNAL(_fromUtf8("itemClicked(QListWidgetItem*)")), BBA.filepathClicked)
         QtCore.QObject.connect(self.PlotButton, QtCore.SIGNAL(_fromUtf8("clicked()")), BBA.plot_totalInt)
         QtCore.QObject.connect(self.actionOpen_Settings, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.openSettings)
+        QtCore.QObject.connect(self.actionOpen_Plotter, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.openPlotter)
         QtCore.QMetaObject.connectSlotsByName(BBA)
 
     def retranslateUi(self, BBA):
@@ -88,6 +92,7 @@ class Ui_BBA(object):
         self.actionOpen_Image_directory.setText(QtGui.QApplication.translate("BBA", "Open Image directory", None, QtGui.QApplication.UnicodeUTF8))
         self.actionClose.setText(QtGui.QApplication.translate("BBA", "Close", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOpen_Settings.setText(QtGui.QApplication.translate("BBA", "Open Settings", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionOpen_Plotter.setText(QtGui.QApplication.translate("BBA", "Open Plotter", None, QtGui.QApplication.UnicodeUTF8))
 
 
 if __name__ == "__main__":
