@@ -8,6 +8,7 @@ from PyQt4 import QtGui
 import numpy as np
 # Matplotlib Figure object
 from matplotlib.figure import Figure
+import matplotlib as mpl
 # import the Qt4Agg FigureCanvas object, that binds Figure to
 # Qt4Agg backend. It also inherits from QWidget
 from matplotlib.backends.backend_qt4agg \
@@ -15,19 +16,21 @@ from matplotlib.backends.backend_qt4agg \
 # import the NavigationToolbar Qt4Agg widget
 from matplotlib.backends.backend_qt4agg \
   import NavigationToolbar2QTAgg as NavigationToolbar
-
-
+    
+        
 class Qt4MplCanvas(FigureCanvas):
     """Class to represent the FigureCanvas widget"""
     def __init__(self, parent):
         # plot definition
         self.fig = Figure()
-        self.axes = self.fig.add_subplot(111)
-        t = np.arange(0.0, 3.0, 0.01)
-        s = np.cos(2*np.pi*t)
-        self.axes.plot(t, s)
         # initialization of the canvas
         FigureCanvas.__init__(self, self.fig)
+        self.axes = self.fig.add_subplot(111)
+        self.x = []
+        self.y = []
+        #self.axes.set_autoscale_on(True)
+        self.axes.plot(self.x, self.y) 
+        #self.fig.canvas.draw()
         # set the parent widget
         self.setParent(parent)
         # we define the widget as expandable
@@ -37,14 +40,38 @@ class Qt4MplCanvas(FigureCanvas):
         # notify the system of updated policy
         FigureCanvas.updateGeometry(self)
         
-class MplWidget(FigureCanvas):
-    def __init__(self, parent):
+    def updatePlot(self, x, y):
+        """ Updates plot window
+        
+        x (arr): x values
+        y (arr): y values
+        
+        """
+        print 'updatePlot in mplwidget'
+        self.axes.clear()
+        self.x = x
+        self.y = y
+        #self.fig.canvas.draw()
+        self.axes.plot(self.x, self.y)
+        mpl.axes.Axes.relim(self.axes)
+        self.fig.canvas.draw()
+        
+class MplWidget(QtGui.QWidget):
+    def __init__(self, parent = None):
+        QtGui.QWidget.__init__(self, parent)
+        # instantiate a widget, it will be the main one
+        self.main_widget = QtGui.QWidget(self)
+        # create a vertical box layout widget 
+        vbl = QtGui.QVBoxLayout(self.main_widget)
         # instantiate our Matplotlib canvas widget
-        qmc = Qt4MplCanvas(self.main_widget)
+        self.qmc = Qt4MplCanvas(self.main_widget)
         # instantiate the navigation toolbar
-        ntb = NavigationToolbar(qmc, self.main_widget)
+        ntb = NavigationToolbar(self.qmc, self.main_widget)
         # pack these widget into the vertical box
+        vbl.addWidget(self.qmc) 
+        vbl.addWidget(ntb) 
         # set the focus on the main widget
         self.main_widget.setFocus() 
         # set the central widget of MainWindow to main_widget 
-        self.setCentralWidget(self.main_widget)
+        #self.setCentralWidget(self.main_widget) 
+        

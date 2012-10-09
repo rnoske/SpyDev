@@ -13,6 +13,7 @@ ion()                            # Turned on Matplotlib's interactive mode
 from Plotterui import Ui_Plotterui
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from mplwidget import *
 
 class guiHandler(QtGui.QMainWindow):
     """ Handler for function calls from gui
@@ -173,6 +174,23 @@ class guiHandler(QtGui.QMainWindow):
         self.pui = Ui_Plotterui()
         self.pui.setupUi(self)
         self.show()
+        
+        
+    def updatePlot(self, x, y):
+        """ Updates plot window
+        
+        x (arr): x values
+        y (arr): y values
+        
+        """
+        print 'updatePlot in guiHandler'
+        self.pui.MPLArea.qmc.updatePlot(x,y)
+        
+    def test_plotter(self):
+        """ my testplotter func"""
+        _x = [1,2,3]
+        _y = [4,5,6]
+        self.updatePlot(_x,_y)
 
 if __name__ == "__main__":
    app = QtGui.QApplication(sys.argv)
