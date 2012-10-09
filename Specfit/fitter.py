@@ -80,6 +80,13 @@ class fitter():
         s (np.array): array of standard deviations
         plotflag (bool): if true an graph is plottet
         
+        Example:
+            n = 2
+            m = [5., 5.]
+            s = [1, 1]
+            x, y_real = myfitter.create_testdata()
+            multiGaussFit(x, y_real, n, m, s)
+            
         """    
         # Initial fit
         y_init = self.gauss(x, m[0], s[0])
@@ -105,7 +112,7 @@ class fitter():
                 y_fit += self.gauss(x, absm[i], s[i]) 
             err = y - y_fit
             return err
-        #parameter magic
+        #parameter magic, notwendig um paramter für leastsq zu bekommen
         p = []
         for item in m:
             p.append(item)
@@ -127,11 +134,13 @@ class fitter():
             plt.plot(x, y_est, 'g.', label='Fitted')
             plt.legend()
             plt.show()
-        
-myfitter = fitter()
-#myfitter.beispiel()
-n = 2
-m = [5., 5.]
-s = [1, 1]
-x, y_real = myfitter.create_testdata()
-myfitter.multiGaussFit(x, y_real, n, m, s)
+      
+      
+if __name__ == "__main__":
+    myfitter = fitter()
+    #myfitter.beispiel()
+    n = 2
+    m = [5., 5.]
+    s = [1, 1]
+    x, y_real = myfitter.create_testdata()
+    myfitter.multiGaussFit(x, y_real, n, m, s)
