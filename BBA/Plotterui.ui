@@ -16,7 +16,7 @@
   <widget class="MplWidget" name="MPLArea" native="true">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>150</x>
      <y>10</y>
      <width>641</width>
      <height>561</height>
@@ -35,24 +35,11 @@
     <enum>Qt::NoContextMenu</enum>
    </property>
   </widget>
-  <widget class="QPushButton" name="Tesplot">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Testplotter</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="PLOT_Button">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>170</y>
+     <x>20</x>
+     <y>190</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -64,14 +51,46 @@
   <widget class="QCheckBox" name="checkTotalInt">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>120</y>
-     <width>70</width>
-     <height>21</height>
+     <x>11</x>
+     <y>101</y>
+     <width>62</width>
+     <height>17</height>
     </rect>
    </property>
    <property name="text">
     <string>total Int</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkFlammenhoehe">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>124</y>
+     <width>95</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Flammenhoehe</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkFlammenhoeheGauss">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>131</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Flammenhoehe Gauss</string>
    </property>
    <property name="checked">
     <bool>true</bool>
@@ -89,30 +108,14 @@
  <resources/>
  <connections>
   <connection>
-   <sender>Tesplot</sender>
-   <signal>clicked()</signal>
-   <receiver>Plotterui</receiver>
-   <slot>test_plotter()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>50</x>
-     <y>31</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>49</x>
-     <y>70</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>PLOT_Button</sender>
    <signal>clicked()</signal>
    <receiver>Plotterui</receiver>
    <slot>myPlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>50</x>
-     <y>184</y>
+     <x>60</x>
+     <y>204</y>
     </hint>
     <hint type="destinationlabel">
      <x>56</x>

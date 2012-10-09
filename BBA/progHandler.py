@@ -50,12 +50,39 @@ class BBA:
         """ Return an array with number and totalInt
         
         """
-        _list = self.bd.get_attList()
+        _att = 'totalInt'
+        _list = self.bd.get_attList(_att)
         _tmpX = []
         _tmpY = []
         for entry in _list:
             _tmpX.append(entry[0])
-            _tmpY.append(entry[2])
+            _tmpY.append(entry[1])
+        return _tmpX, _tmpY
+        
+    def get_flammenhoehe_list(self):
+        """ Return an array with number and flammenhoehe
+        
+        """
+        _att = 'flammenhoehe'
+        _list = self.bd.get_attList(_att)
+        _tmpX = []
+        _tmpY = []
+        for entry in _list:
+            _tmpX.append(entry[0])
+            _tmpY.append(entry[1])
+        return _tmpX, _tmpY
+        
+    def get_flammenhoeheGauss_list(self):
+        """ Return an array with number and flammenhoeheGauss
+        
+        """
+        _att = 'flammenhoeheGauss'
+        _list = self.bd.get_attList(_att)
+        _tmpX = []
+        _tmpY = []
+        for entry in _list:
+            _tmpX.append(entry[0])
+            _tmpY.append(entry[1])
         return _tmpX, _tmpY
         
     #Settingsui handling
@@ -70,6 +97,12 @@ class BBA:
         """ Save the dictionary to file
         
         """
-        print cfgdict
         self.cf.writeConfigOptions(section, cfgdict)
+        
+    def setImageSettings(self):
+        """ Set Settings to each Bild instance
+        
+        """
+        _sdict = self.get_settings()
+        self.bd.setImageSettings(_sdict)
         

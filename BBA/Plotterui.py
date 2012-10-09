@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Plotterui.ui'
 #
-# Created: Tue Oct 09 10:30:36 2012
+# Created: Tue Oct 09 15:52:08 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -19,7 +19,7 @@ class Ui_Plotterui(object):
         Plotterui.setObjectName(_fromUtf8("Plotterui"))
         Plotterui.resize(803, 586)
         self.MPLArea = MplWidget(Plotterui)
-        self.MPLArea.setGeometry(QtCore.QRect(110, 10, 641, 561))
+        self.MPLArea.setGeometry(QtCore.QRect(150, 10, 641, 561))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -28,27 +28,32 @@ class Ui_Plotterui(object):
         self.MPLArea.setFocusPolicy(QtCore.Qt.NoFocus)
         self.MPLArea.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.MPLArea.setObjectName(_fromUtf8("MPLArea"))
-        self.Tesplot = QtGui.QPushButton(Plotterui)
-        self.Tesplot.setGeometry(QtCore.QRect(10, 20, 75, 23))
-        self.Tesplot.setObjectName(_fromUtf8("Tesplot"))
         self.PLOT_Button = QtGui.QPushButton(Plotterui)
-        self.PLOT_Button.setGeometry(QtCore.QRect(10, 170, 75, 23))
+        self.PLOT_Button.setGeometry(QtCore.QRect(20, 190, 75, 23))
         self.PLOT_Button.setObjectName(_fromUtf8("PLOT_Button"))
         self.checkTotalInt = QtGui.QCheckBox(Plotterui)
-        self.checkTotalInt.setGeometry(QtCore.QRect(20, 120, 70, 21))
+        self.checkTotalInt.setGeometry(QtCore.QRect(11, 101, 62, 17))
         self.checkTotalInt.setChecked(True)
         self.checkTotalInt.setObjectName(_fromUtf8("checkTotalInt"))
+        self.checkFlammenhoehe = QtGui.QCheckBox(Plotterui)
+        self.checkFlammenhoehe.setGeometry(QtCore.QRect(11, 124, 95, 17))
+        self.checkFlammenhoehe.setChecked(True)
+        self.checkFlammenhoehe.setObjectName(_fromUtf8("checkFlammenhoehe"))
+        self.checkFlammenhoeheGauss = QtGui.QCheckBox(Plotterui)
+        self.checkFlammenhoeheGauss.setGeometry(QtCore.QRect(10, 150, 131, 17))
+        self.checkFlammenhoeheGauss.setChecked(True)
+        self.checkFlammenhoeheGauss.setObjectName(_fromUtf8("checkFlammenhoeheGauss"))
 
         self.retranslateUi(Plotterui)
-        QtCore.QObject.connect(self.Tesplot, QtCore.SIGNAL(_fromUtf8("clicked()")), Plotterui.test_plotter)
         QtCore.QObject.connect(self.PLOT_Button, QtCore.SIGNAL(_fromUtf8("clicked()")), Plotterui.myPlot)
         QtCore.QMetaObject.connectSlotsByName(Plotterui)
 
     def retranslateUi(self, Plotterui):
         Plotterui.setWindowTitle(QtGui.QApplication.translate("Plotterui", "Plotter", None, QtGui.QApplication.UnicodeUTF8))
-        self.Tesplot.setText(QtGui.QApplication.translate("Plotterui", "Testplotter", None, QtGui.QApplication.UnicodeUTF8))
         self.PLOT_Button.setText(QtGui.QApplication.translate("Plotterui", "PLOT!", None, QtGui.QApplication.UnicodeUTF8))
         self.checkTotalInt.setText(QtGui.QApplication.translate("Plotterui", "total Int", None, QtGui.QApplication.UnicodeUTF8))
+        self.checkFlammenhoehe.setText(QtGui.QApplication.translate("Plotterui", "Flammenhoehe", None, QtGui.QApplication.UnicodeUTF8))
+        self.checkFlammenhoeheGauss.setText(QtGui.QApplication.translate("Plotterui", "Flammenhoehe Gauss", None, QtGui.QApplication.UnicodeUTF8))
 
 from mplwidget import MplWidget
 

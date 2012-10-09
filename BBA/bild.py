@@ -99,9 +99,10 @@ class Bild:
             np.array
             
         """
-        self.att['hoehe'] = np.array(self.open_image()).shape[0]
-        self.att['breite'] = np.array(self.open_image()).shape[1]
-        return np.array(self.open_image())
+        #self.att['hoehe'] = np.array(self.open_image()).shape[0]
+        #self.att['breite'] = np.array(self.open_image()).shape[1]
+        _arr = np.array(self.open_image())
+        return _arr
         
     def calc_totalInt(self):
         """ Calculate total Pixel count of image
@@ -109,10 +110,113 @@ class Bild:
         """
         _arr = self.create_array()
         self.att['totalInt'] = _arr.sum()
-        _apx = self.att['hoehe'] * self.att['breite']
+        hoehe = _arr.shape[0]
+        breite = _arr.shape[1]
+        _apx = breite * hoehe
         self.att['mittelint'] = self.att['totalInt'] / _apx
         
+    def calc_flammenhoehe(self):
+        """ Calculate flame height for image
         
+        """
+        #load needed Settings
+        nullpunkt = int(self.sdict['nullpunkt'])
+        flammenmitte = int(self.sdict['flammenmitte'])
+        aufloesung = float(self.sdict['aufloesung'])
+        _arr = self.create_array()
+        
+        #nehme nur blauen farbkanal
+        if _arr.shape[2] > 1:
+            _arr = _arr[:,:,2]
+        
+        #Check if nullpunkt and flammenmitte have valid values
+        hoehe = _arr.shape[0]
+        breite = _arr.shape[1]
+        if nullpunkt < 0 or nullpunkt > hoehe:
+            #print 'nullpunkt falsch'
+            logging.error('Nullpunkt nicht innerhalb des Bildes')
+        elif flammenmitte < 0 or flammenmitte > breite:
+            #print 'flammenmitte falsch'
+            logging.error('Flammenmitte nicht innerhalb des Bildes')
+
+        #calculation
+        #roi = arr[:,flammenmitte-breite:flammenmitte+breite]
+        #roi = roi.sum(axis=1)
+        _roi = _arr[:,flammenmitte]
+        _posMax = np.argmax(_roi)
+        #print _posMax
+        self.att['flammenhoehe'] = (nullpunkt - _posMax) / aufloesung
+        self.att['flammenhoeheIndex'] = _posMax
+        
+    def fit_Gauss(self, y, centerguess = 100, fitEnabled = False):
+        """ Fit 1D Gauss function to Data
+        
+        y (npArray): Numpy array with equally spaced y data
+        fitEnabled (bool): optional to plot data with pylab
+        
+        Returns:
+            fitapramter (array)
+            
+        """
+        B = 53 #B noise
+        A = 150 #A Amplitude
+        mu = centerguess # mu center
+        sigma = 20 #sigma width
+        coeffs = [B, A, mu, sigma]
+        
+        _max = len(y)-1
+        x = np.linspace(0,_max, len(y))
+        y = np.array(y)
+        
+        from scipy.optimize import curve_fit
+
+        gauss = lambda x , b, a, mu, sigma: b+a*np.exp(-((x-mu)/sigma)**2)
+        p, cov = curve_fit(gauss, x, y, p0=np.array(coeffs))
+        
+        #if fitting is neccessary
+        if fitEnabled == True:
+            myfit = lambda x: p[0]+p[1]*np.exp(-((x-p[2])/p[3])**2)
+            import pylab as pl
+            #pl.plot(x,y,'b.', x, myfit(x), 'r-')
+            pl.plot(x,y)
+            pl.plot(x,myfit(x))
+            pl.show()
+        return p
+
+        
+    def calc_flammenhoeheGauss(self):
+        """ Calculate flame height with gauss fit
+        
+        """
+        #load needed Settings
+        nullpunkt = int(self.sdict['nullpunkt'])
+        flammenmitte = int(self.sdict['flammenmitte'])
+        aufloesung = float(self.sdict['aufloesung'])
+        _arr = self.create_array()
+        
+        #nehme nur blauen farbkanal
+        if _arr.shape[2] > 1:
+            _arr = _arr[:,:,2]
+        
+        #Check if nullpunkt and flammenmitte have valid values
+        hoehe = _arr.shape[0]
+        breite = _arr.shape[1]
+        if nullpunkt < 0 or nullpunkt > hoehe:
+            #print 'nullpunkt falsch'
+            logging.error('Nullpunkt nicht innerhalb des Bildes')
+        elif flammenmitte < 0 or flammenmitte > breite:
+            #print 'flammenmitte falsch'
+            logging.error('Flammenmitte nicht innerhalb des Bildes')
+        #Calculations
+        _roi = _arr[:,flammenmitte]
+        _guessMax = np.argmax(_roi)
+        _posMax = self.fit_Gauss(_roi, centerguess = _guessMax)
+        print _posMax
+        _posMax = _posMax[2]
+        print _posMax
+        #print _posMax
+        self.att['flammenhoeheGauss'] = (nullpunkt - _posMax) / aufloesung
+        self.att['flammenhoeheGaussIndex'] = _posMax
         
 class ColorBild(Bild):
     """

@@ -60,6 +60,13 @@ class guiHandler(QtGui.QMainWindow):
             _fp = QtGui.QListWidgetItem(name, self.ui.ImageList)
             self.ui.ImageList.addItem(_fp)
             
+        #Set Image settings
+        try:
+            self.setImageSettings()
+        except:
+            logging.error('Fehler beim schreiben der Settings beim \
+            oeffnen der Datei')
+            
 
     def filepathClicked(self):
         """ Responds to clicked image
@@ -147,6 +154,12 @@ class guiHandler(QtGui.QMainWindow):
             self.bba.set_settings(_setDict)
         except:
             logging.error('Settings konnten nicht geschrieben werden')
+            
+    def setImageSettings(self):
+        """ Send Settings to each Bild instance
+        
+        """
+        self.bba.setImageSettings()
     
     def chooseWorkspace(self):
         """ File Dialog to choose current workspace
@@ -180,6 +193,10 @@ class guiHandler(QtGui.QMainWindow):
         # checked = 2 unchecked = 0
         if self.pui.checkTotalInt.checkState() == 2:
             self.plot_totalInt()
+        elif self.pui.checkFlammenhoehe.checkState() == 2:
+            self.plot_flammenhoehe()
+        elif self.pui.checkFlammenhoeheGauss.checkState() == 2:
+            self.plot_flammenhoeheGauss()
         else:
             self.test_plotter()
         
@@ -194,6 +211,20 @@ class guiHandler(QtGui.QMainWindow):
         
         """
         _x, _y = self.bba.get_totalInt_list()
+        self.updatePlot(_x,_y)
+        
+    def plot_flammenhoehe(self):
+        """ Responds to plot flammenhoehe call
+        
+        """
+        _x, _y = self.bba.get_flammenhoehe_list()
+        self.updatePlot(_x,_y)
+        
+    def plot_flammenhoeheGauss(self):
+        """ Responds to plot flammenhoehe call
+        
+        """
+        _x, _y = self.bba.get_flammenhoeheGauss_list()
         self.updatePlot(_x,_y)
 
 if __name__ == "__main__":

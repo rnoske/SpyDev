@@ -35,24 +35,74 @@ class bilderdict:
         for k, v in self.bdict.iteritems():
             try:
                 v.calc_totalInt()
-                _msg = 'Total Int von ' + str(k) + 'wurde berechnet'
+                _msg = 'Total Int von ' + str(k) + ' wurde berechnet'
                 logging.debug(_msg)
                 
             except:
-                _errmsg = 'Total Int von ' + str(k) + 'konnte nicht berechnet \
+                _errmsg = 'Total Int von ' + str(k) + ' konnte nicht berechnet \
                 werden'
                 logging.error(_errmsg)
+                
+    def calc_flammenhoehe(self):
+        """ Calculate flame height for every image in the dict
         
-    def get_attList(self):
+        """
+        for k, v in self.bdict.iteritems():
+            try:
+                v.calc_flammenhoehe()
+                _msg = 'Flammenhoehe von ' + str(k) + ' wurde berechnet'
+                logging.debug(_msg)
+            except:
+                _errmsg = 'Flammenhoehe von ' + str(k) + ' konnte nicht \
+                berechnet werden'
+                logging.error(_errmsg)
+                
+    def calc_flammenhoeheGauss(self):
+        """ Calculate flame height with Gauss function for every image in the dict
+        
+        """
+        for k, v in self.bdict.iteritems():
+            try:
+                v.calc_flammenhoeheGauss()
+                _msg = 'FlammenhoeheFauss von ' + str(k) + ' wurde berechnet'
+                logging.debug(_msg)
+            except:
+                _errmsg = 'FlammenhoeheGauss von ' + str(k) + ' konnte nicht \
+                berechnet werden'
+                logging.error(_errmsg)
+        
+    def get_attList(self, attribute):
         """ Get attributes of images in the dict
         
+        att (str): key of attribute which should be returned
+        
         Return:
-            array: 3 columns; number, name, totalInt
+            array [bid, att]
             
         """
-        self.calc_totalInt()
+        #chooes which calculation to perform
+        if attribute == 'totalInt':
+            self.calc_totalInt()
+        elif attribute == 'flammenhoehe':
+            self.calc_flammenhoehe()
+        elif attribute == 'flammenhoeheGauss':
+            self.calc_flammenhoeheGauss()
+        
         _tmp = []
+        #for every item in dictionary
         for k, v in self.bdict.iteritems():
-            _entry = [v.att['bid'], v.att['name'], v.att['totalInt']]
+            _entry = [v.att['bid'], v.att[attribute]]
             _tmp.append(_entry)
         return _tmp
+        
+    def setImageSettings(self, sdict):
+        """ Set Image Settings for each Bild class instance
+        
+        sdict (dict): Settings dictionaray
+        """
+        for k, v in self.bdict.iteritems():
+            try:
+                v.sdict = sdict
+            except:
+                logging.error('Settings Dictionary konnte nicht zum Bild \
+                hinzugefuegt werden')
