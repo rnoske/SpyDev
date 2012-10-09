@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Plotterui.ui'
 #
-# Created: Tue Oct 09 09:04:40 2012
+# Created: Tue Oct 09 10:30:36 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,14 +31,24 @@ class Ui_Plotterui(object):
         self.Tesplot = QtGui.QPushButton(Plotterui)
         self.Tesplot.setGeometry(QtCore.QRect(10, 20, 75, 23))
         self.Tesplot.setObjectName(_fromUtf8("Tesplot"))
+        self.PLOT_Button = QtGui.QPushButton(Plotterui)
+        self.PLOT_Button.setGeometry(QtCore.QRect(10, 170, 75, 23))
+        self.PLOT_Button.setObjectName(_fromUtf8("PLOT_Button"))
+        self.checkTotalInt = QtGui.QCheckBox(Plotterui)
+        self.checkTotalInt.setGeometry(QtCore.QRect(20, 120, 70, 21))
+        self.checkTotalInt.setChecked(True)
+        self.checkTotalInt.setObjectName(_fromUtf8("checkTotalInt"))
 
         self.retranslateUi(Plotterui)
         QtCore.QObject.connect(self.Tesplot, QtCore.SIGNAL(_fromUtf8("clicked()")), Plotterui.test_plotter)
+        QtCore.QObject.connect(self.PLOT_Button, QtCore.SIGNAL(_fromUtf8("clicked()")), Plotterui.myPlot)
         QtCore.QMetaObject.connectSlotsByName(Plotterui)
 
     def retranslateUi(self, Plotterui):
         Plotterui.setWindowTitle(QtGui.QApplication.translate("Plotterui", "Plotter", None, QtGui.QApplication.UnicodeUTF8))
         self.Tesplot.setText(QtGui.QApplication.translate("Plotterui", "Testplotter", None, QtGui.QApplication.UnicodeUTF8))
+        self.PLOT_Button.setText(QtGui.QApplication.translate("Plotterui", "PLOT!", None, QtGui.QApplication.UnicodeUTF8))
+        self.checkTotalInt.setText(QtGui.QApplication.translate("Plotterui", "total Int", None, QtGui.QApplication.UnicodeUTF8))
 
 from mplwidget import MplWidget
 

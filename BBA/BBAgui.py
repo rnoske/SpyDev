@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'BBAgui.ui'
 #
-# Created: Mon Oct 08 14:06:28 2012
+# Created: Tue Oct 09 10:22:40 2012
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,12 +17,9 @@ except AttributeError:
 class Ui_BBA(object):
     def setupUi(self, BBA):
         BBA.setObjectName(_fromUtf8("BBA"))
-        BBA.resize(696, 457)
+        BBA.resize(545, 457)
         self.centralwidget = QtGui.QWidget(BBA)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.PlotButton = QtGui.QPushButton(self.centralwidget)
-        self.PlotButton.setGeometry(QtCore.QRect(530, 10, 151, 41))
-        self.PlotButton.setObjectName(_fromUtf8("PlotButton"))
         self.layoutWidget = QtGui.QWidget(self.centralwidget)
         self.layoutWidget.setGeometry(QtCore.QRect(0, 0, 524, 411))
         self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
@@ -49,7 +46,7 @@ class Ui_BBA(object):
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         BBA.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(BBA)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 696, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 545, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuMein_test = QtGui.QMenu(self.menubar)
         self.menuMein_test.setObjectName(_fromUtf8("menuMein_test"))
@@ -78,14 +75,12 @@ class Ui_BBA(object):
         QtCore.QObject.connect(self.actionClose, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.close)
         QtCore.QObject.connect(self.OpenImages, QtCore.SIGNAL(_fromUtf8("clicked()")), BBA.openImages)
         QtCore.QObject.connect(self.ImageList, QtCore.SIGNAL(_fromUtf8("itemClicked(QListWidgetItem*)")), BBA.filepathClicked)
-        QtCore.QObject.connect(self.PlotButton, QtCore.SIGNAL(_fromUtf8("clicked()")), BBA.plot_totalInt)
         QtCore.QObject.connect(self.actionOpen_Settings, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.openSettings)
         QtCore.QObject.connect(self.actionOpen_Plotter, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.openPlotter)
         QtCore.QMetaObject.connectSlotsByName(BBA)
 
     def retranslateUi(self, BBA):
         BBA.setWindowTitle(QtGui.QApplication.translate("BBA", "BBA", None, QtGui.QApplication.UnicodeUTF8))
-        self.PlotButton.setText(QtGui.QApplication.translate("BBA", "Plot totalInt", None, QtGui.QApplication.UnicodeUTF8))
         self.OpenImages.setText(QtGui.QApplication.translate("BBA", "Open Images", None, QtGui.QApplication.UnicodeUTF8))
         self.menuMein_test.setTitle(QtGui.QApplication.translate("BBA", "Menu", None, QtGui.QApplication.UnicodeUTF8))
         self.actionOpen_Images.setText(QtGui.QApplication.translate("BBA", "Open Images", None, QtGui.QApplication.UnicodeUTF8))

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>696</width>
+    <width>545</width>
     <height>457</height>
    </rect>
   </property>
@@ -14,19 +14,6 @@
    <string>BBA</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="PlotButton">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>10</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Plot totalInt</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
@@ -63,15 +50,13 @@
      </item>
     </layout>
    </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>PlotButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>696</width>
+     <width>545</width>
      <height>21</height>
     </rect>
    </property>
@@ -161,22 +146,6 @@
     <hint type="destinationlabel">
      <x>175</x>
      <y>445</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>PlotButton</sender>
-   <signal>clicked()</signal>
-   <receiver>BBA</receiver>
-   <slot>plot_totalInt()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>607</x>
-     <y>35</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>142</x>
-     <y>456</y>
     </hint>
    </hints>
   </connection>

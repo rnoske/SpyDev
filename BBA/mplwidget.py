@@ -47,7 +47,6 @@ class Qt4MplCanvas(FigureCanvas):
         y (arr): y values
         
         """
-        print 'updatePlot in mplwidget'
         self.axes.clear()
         self.x = x
         self.y = y

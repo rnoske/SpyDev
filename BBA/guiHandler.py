@@ -87,15 +87,6 @@ class guiHandler(QtGui.QMainWindow):
         view.setScene(scene)
         view.show()
         
-    def plot_totalInt(self):
-        """ Responds to plot total Int call
-        
-        """
-        _X, _Y = self.bba.get_totalInt_list()
-        plt.plot(_X, _Y)
-        plt.ylabel('Total Int')
-        plt.show()
-        
     #Settings function
     def openSettings(self):
         """ Responds to open Settings call from Settings.ui
@@ -183,13 +174,26 @@ class guiHandler(QtGui.QMainWindow):
         y (arr): y values
         
         """
-        print 'updatePlot in guiHandler'
         self.pui.MPLArea.qmc.updatePlot(x,y)
+        
+    def myPlot(self):
+        # checked = 2 unchecked = 0
+        if self.pui.checkTotalInt.checkState() == 2:
+            self.plot_totalInt()
+        else:
+            self.test_plotter()
         
     def test_plotter(self):
         """ my testplotter func"""
-        _x = [1,2,3]
-        _y = [4,5,6]
+        _x = [0,1]
+        _y = [0,0]
+        self.updatePlot(_x,_y)
+        
+    def plot_totalInt(self):
+        """ Responds to plot total Int call
+        
+        """
+        _x, _y = self.bba.get_totalInt_list()
         self.updatePlot(_x,_y)
 
 if __name__ == "__main__":

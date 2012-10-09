@@ -48,6 +48,35 @@
     <string>Testplotter</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="PLOT_Button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PLOT!</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkTotalInt">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>120</y>
+     <width>70</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>total Int</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -75,8 +104,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>PLOT_Button</sender>
+   <signal>clicked()</signal>
+   <receiver>Plotterui</receiver>
+   <slot>myPlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>50</x>
+     <y>184</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>56</x>
+     <y>225</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>test_plotter()</slot>
+  <slot>myPlot()</slot>
  </slots>
 </ui>
