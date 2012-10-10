@@ -7,9 +7,9 @@ from progHandler import BBA
 import logging
 import sys
 import matplotlib as mpl         # Matplotlib (2D/3D plotting library)
-import matplotlib.pyplot as plt  # Matplotlib's pyplot: MATLAB-like syntax
-from pylab import *              # Matplotlib's pylab interface
-ion()                            # Turned on Matplotlib's interactive mode
+#import matplotlib.pyplot as plt  # Matplotlib's pyplot: MATLAB-like syntax
+#from pylab import *              # Matplotlib's pylab interface
+#ion()                            # Turned on Matplotlib's interactive mode
 from Plotterui import Ui_Plotterui
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
@@ -27,6 +27,8 @@ class guiHandler(QtGui.QMainWindow):
         self.ui = Ui_BBA()
         self.ui.setupUi(self)
         self.bba = BBA()
+        
+        #self.openSettings()
 
         #handlers: gar nicht wirklich gebraucht! Einfach signal von button auf Main window ziehen
         #QtCore.QObject.connect(self.ui.buttonCalc, QtCore.SIGNAL("clicked()"), self.ui.lineEditX.clear )
