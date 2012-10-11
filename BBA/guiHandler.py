@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from PyQt4 import QtGui, QtCore
-from BBAgui import Ui_BBA
-from Settingsui import Ui_Settings
+import BBAgui #from BBAgui import Ui_BBA
+import Settingsui #from Settingsui import Ui_Settings
 from progHandler import BBA
 import logging
 import sys
@@ -24,15 +24,12 @@ class guiHandler(QtGui.QMainWindow):
         
         """
         QtGui.QWidget.__init__(self, parent)
-        self.ui = Ui_BBA()
+        self.ui = BBAgui.Ui_BBA()
         self.ui.setupUi(self)
+        self.show()
+        
         self.bba = BBA()
         
-        #self.openSettings()
-
-        #handlers: gar nicht wirklich gebraucht! Einfach signal von button auf Main window ziehen
-        #QtCore.QObject.connect(self.ui.buttonCalc, QtCore.SIGNAL("clicked()"), self.ui.lineEditX.clear )
-        #QtCore.QObject.connect(self.ui.pushButton, QtCore.SIGNAL("clicked()"), self.raysFunc )
     
     def raysFunc(self):
         """ my testfunc
@@ -97,12 +94,12 @@ class guiHandler(QtGui.QMainWindow):
         view.show()
         
     #Settings function
-    def openSettings(self):
+    def openSettings(self, parent = None):
         """ Responds to open Settings call from Settings.ui
         
         """
-        QtGui.QWidget.__init__(self, parent = None)
-        self.sui = Ui_Settings()
+        QtGui.QWidget.__init__(self, parent)
+        self.sui = Settingsui.Ui_Settings()
         self.sui.setupUi(self)
         self.show()
         
@@ -232,5 +229,4 @@ class guiHandler(QtGui.QMainWindow):
 if __name__ == "__main__":
    app = QtGui.QApplication(sys.argv)
    myapp = guiHandler()
-   myapp.show()
    sys.exit(app.exec_())

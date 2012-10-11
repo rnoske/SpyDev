@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'BBAgui.ui'
 #
-# Created: Tue Oct 09 10:22:40 2012
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Thu Oct 11 21:22:44 2012
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -72,11 +72,11 @@ class Ui_BBA(object):
         self.menubar.addAction(self.menuMein_test.menuAction())
 
         self.retranslateUi(BBA)
-        QtCore.QObject.connect(self.actionClose, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.close)
+        QtCore.QObject.connect(self.actionClose, QtCore.SIGNAL(_fromUtf8("triggered()")), BBA.close)
         QtCore.QObject.connect(self.OpenImages, QtCore.SIGNAL(_fromUtf8("clicked()")), BBA.openImages)
         QtCore.QObject.connect(self.ImageList, QtCore.SIGNAL(_fromUtf8("itemClicked(QListWidgetItem*)")), BBA.filepathClicked)
-        QtCore.QObject.connect(self.actionOpen_Settings, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.openSettings)
-        QtCore.QObject.connect(self.actionOpen_Plotter, QtCore.SIGNAL(_fromUtf8("activated()")), BBA.openPlotter)
+        QtCore.QObject.connect(self.actionOpen_Settings, QtCore.SIGNAL(_fromUtf8("triggered()")), BBA.openSettings)
+        QtCore.QObject.connect(self.actionOpen_Plotter, QtCore.SIGNAL(_fromUtf8("triggered()")), BBA.openPlotter)
         QtCore.QMetaObject.connectSlotsByName(BBA)
 
     def retranslateUi(self, BBA):

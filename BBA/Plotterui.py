@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Plotterui.ui'
 #
-# Created: Tue Oct 09 15:52:08 2012
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Thu Oct 11 21:22:46 2012
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
 

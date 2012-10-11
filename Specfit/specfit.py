@@ -18,30 +18,34 @@ class specfit(QtGui.QMainWindow):
 
         
         QtGui.QWidget.__init__(self, parent)
-        #myFittergui = QtGui.QMainWindow()
+
         ui = Fittergui.Ui_Fittergui()
         ui.setupUi(self)
-        #myFittergui.show()
+        self.show()
         
-        self.openWidgetWindow()
+        #self.openWidgetWindow()
     
         
         
         
 
-    def openWidgetWindow(self):
-        self.myFitterWidget = QtGui.QMainWindow()
-        self.wui = Fitterwidget.Ui_FitterWidget()
-        self.wui.setupUi(self.myFitterWidget)
-        self.myFitterWidget.show()
+    def openWidgetWindow(self, parent = None):
+        QtGui.QWidget.__init__(self, parent)
+        wui = Fitterwidget.Ui_FitterWidget()
+        wui.setupUi(self)
+        self.show()
         
     def raysfunc(self):
         print 'blub'
+        self.openWidgetWindow()
+        
+    def raysfunc2(self):
+        print 'bla'
 
 if __name__ == "__main__":
     app2 = QtGui.QApplication(sys.argv)
     myspecfit = specfit()
-    myspecfit.show()
+    #myspecfit.show()
     sys.exit(app2.exec_())
     
     #app = QtGui.QApplication(sys.argv)

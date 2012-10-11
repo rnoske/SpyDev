@@ -69,7 +69,7 @@
  <connections>
   <connection>
    <sender>actionLoad</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>label</receiver>
    <slot>clear()</slot>
    <hints>

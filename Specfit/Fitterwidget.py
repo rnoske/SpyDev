@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Fitterwidget.ui'
 #
-# Created: Thu Oct 11 17:24:38 2012
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Thu Oct 11 21:18:58 2012
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -39,6 +39,7 @@ class Ui_FitterWidget(object):
         self.menubar.addAction(self.menuMenu.menuAction())
 
         self.retranslateUi(FitterWidget)
+        QtCore.QObject.connect(self.actionLoad, QtCore.SIGNAL(_fromUtf8("triggered()")), FitterWidget.raysfunc2)
         QtCore.QMetaObject.connectSlotsByName(FitterWidget)
 
     def retranslateUi(self, FitterWidget):

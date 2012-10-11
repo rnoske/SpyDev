@@ -14,7 +14,7 @@
    <string>Settings</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -159,7 +159,7 @@
  <connections>
   <connection>
    <sender>actionLoad</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>Settings</receiver>
    <slot>loadSettings()</slot>
    <hints>
@@ -175,7 +175,7 @@
   </connection>
   <connection>
    <sender>actionSave</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>Settings</receiver>
    <slot>saveSettings()</slot>
    <hints>

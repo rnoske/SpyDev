@@ -103,7 +103,7 @@
  <connections>
   <connection>
    <sender>actionClose</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>BBA</receiver>
    <slot>close()</slot>
    <hints>
@@ -151,7 +151,7 @@
   </connection>
   <connection>
    <sender>actionOpen_Settings</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>BBA</receiver>
    <slot>openSettings()</slot>
    <hints>
@@ -167,7 +167,7 @@
   </connection>
   <connection>
    <sender>actionOpen_Plotter</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>BBA</receiver>
    <slot>openPlotter()</slot>
    <hints>

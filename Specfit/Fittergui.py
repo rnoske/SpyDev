@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Fittergui.ui'
 #
-# Created: Thu Oct 11 17:59:47 2012
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Thu Oct 11 21:19:30 2012
+#      by: PyQt4 UI code generator 4.9.5
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -42,7 +42,7 @@ class Ui_Fittergui(object):
         self.menubar.addAction(self.menuMenu.menuAction())
 
         self.retranslateUi(Fittergui)
-        QtCore.QObject.connect(self.actionLoad, QtCore.SIGNAL(_fromUtf8("activated()")), self.label.clear)
+        QtCore.QObject.connect(self.actionLoad, QtCore.SIGNAL(_fromUtf8("triggered()")), self.label.clear)
         QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), Fittergui.raysfunc)
         QtCore.QMetaObject.connectSlotsByName(Fittergui)
 
