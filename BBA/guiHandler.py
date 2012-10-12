@@ -1,16 +1,23 @@
 # -*- coding: utf-8 -*-
 
-from PyQt4 import QtGui, QtCore
-import BBAgui #from BBAgui import Ui_BBA
-import Settingsui #from Settingsui import Ui_Settings
-from progHandler import BBA
+#standard library imports
 import logging
 import sys
+
+#related third party imports
+from PyQt4 import QtGui, QtCore
+
+#local application/library specific imports
+import BBAgui #from BBAgui import Ui_BBA
+import Settingsui #from Settingsui import Ui_Settings
+from Plotterui import Ui_Plotterui
+from progHandler import BBA
+
 #import matplotlib as mpl         # Matplotlib (2D/3D plotting library)
 #import matplotlib.pyplot as plt  # Matplotlib's pyplot: MATLAB-like syntax
 #from pylab import *              # Matplotlib's pylab interface
 #ion()                            # Turned on Matplotlib's interactive mode
-from Plotterui import Ui_Plotterui
+
 #from matplotlib.figure import Figure
 #from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 #from mplwidget import *
