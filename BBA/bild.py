@@ -3,8 +3,6 @@
 """
 Basic bild class for handling taken images.
 """
-#Imports:
-import logging
 """
 logging info:
 DEBUG	Detailed information, typically of interest only when diagnosing problems.
@@ -17,17 +15,30 @@ ERROR	Due to a more serious problem, the software has not been able to perform
 CRITICAL	A serious error, indicating that the program itself may be unable 
     to continue running.
 """
-#Scientific imports, idea taken from spyder
+
+#standard library imports
+import logging
+#import sys
 import os
+import threading
+
+#related third party imports
 import numpy as np # NumPy (multidimensional arrays, linear algebra, ...)
+
+#local application/library specific imports
+import rnio
+import fitter
+
+
+#Scientific imports, idea taken from spyder
+
 #import scipy as sp # SciPy (signal and image processing library)
 #import matplotlib as mpl         # Matplotlib (2D/3D plotting library)
 #import matplotlib.pyplot as plt  # Matplotlib's pyplot: MATLAB-like syntax
 #from pylab import *              # Matplotlib's pylab interface
 #ion()                            # Turned on Matplotlib's interactive mode
 
-from PIL import Image as PILImage
-import threading
+
 
 #Actual code
 class Bild:
@@ -62,6 +73,9 @@ class Bild:
         
         """
         self.att = {} #attribute directory
+        self.rnio = rnio.RnIo()
+        self.fitter = fitter.Fitter()
+        
         #checks if pfad is valid
         if os.path.exists(pfad) == True:
             self.pfad = pfad
@@ -86,11 +100,19 @@ class Bild:
         """ Opens and returns an PIL image
         
         """
-        _fp = open(self.pfad, 'rb')
-        img = PILImage.open(_fp)
-        #img = img.convert('L')
-        _fp.close
-        return img
+        #finde dateiendung
+        _end = self.pfad.split('.')
+        _end = _end.pop()
+        
+        #wenn Endung = .bmp, .jpg
+        _endl1 = ['bmp', 'jpg']
+        if _end in _endl1:
+            _arr = self.rnio.read_Image_nparray(self.path)
+            logging.info('Bild geoeffnet')
+        else:
+            logging.error('Dateiendung konnte nicht geoeffnet werden')
+            
+        return _arr
         
     def create_array(self):
         """ Create and numpy array from open image
@@ -101,7 +123,7 @@ class Bild:
         """
         #self.att['hoehe'] = np.array(self.open_image()).shape[0]
         #self.att['breite'] = np.array(self.open_image()).shape[1]
-        _arr = np.array(self.open_image())
+        _arr = self.open_image()
         return _arr
         
     def calc_totalInt(self):

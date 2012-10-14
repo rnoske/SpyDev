@@ -17,7 +17,8 @@ from matplotlib.backends.backend_qt4agg \
 from matplotlib.backends.backend_qt4agg \
   import NavigationToolbar2QTAgg as NavigationToolbar
     
-        
+    
+
 class Qt4MplCanvas(FigureCanvas):
     """Class to represent the FigureCanvas widget"""
     def __init__(self, parent):

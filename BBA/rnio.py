@@ -59,7 +59,7 @@ class RnIo():
                     _row += str(nparray[y, x]) + delimiter
                 _row += '\n'
                 f.write(_row)
-            
+                
     def read_csv_nparray(self, name = 'test.csv', 
                          header = False, 
                          delimiter = ';'):
@@ -97,6 +97,40 @@ class RnIo():
 
         _arr = np.array(_arr)          
         return _header, _arr
+                
+    def write_nparray_Image(self, nparray, name = 'test.bmp', normiert = True):
+        """ Write an 2D/3D nparray as an Image
+        
+        nparray (numpy arra): 2D/3D Numpy array
+        name (str): filename of image
+        normiert (bool): if true the Image will be normalized
+        
+        """
+        filepath = self.workspace + name
+        
+        from PIL import Image as PILImage
+        _image = PILImage.fromarray(nparray)
+        
+        if normiert == True:
+            from PIL import ImageOps
+            _image = ImageOps.autocontrast(_image, cutoff=0)
+            
+        _image.save(filepath)
+        
+    def read_Image_nparray(self, filepath):
+        """ Reads Image with PIL and converts it to numpy array
+        
+        filepath (str): complete filepath to Image
+        
+        """
+        _fp = open(filepath, 'rb')
+        from PIL import Image as PILImage
+        _img = PILImage.open(_fp)
+        #img = img.convert('L')
+        _fp.close()
+        _arr = np.array(_img)
+        return _arr
+    
                 
     def read_fits_nparray(self, name = 'test.fit', number = 0):
         """ Read .fits file from iStar camera
