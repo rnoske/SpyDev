@@ -78,7 +78,7 @@ class Bild:
         
         #checks if pfad is valid
         if os.path.exists(pfad) == True:
-            self.pfad = pfad
+            self.pfad = str(pfad)
             logging.info('Image pfad was set: %s', pfad)
             self.calc_name()
             with Bild.lock:
@@ -92,7 +92,7 @@ class Bild:
         """ Set a name for the image.
         
         """
-        namen = str(self.pfad).split(os.sep) 
+        namen = str(self.pfad).split(os.sep)
         name = namen.pop()
         self.att['name']=name
         
@@ -107,7 +107,7 @@ class Bild:
         #wenn Endung = .bmp, .jpg
         _endl1 = ['bmp', 'jpg']
         if _end in _endl1:
-            _arr = self.rnio.read_Image_nparray(self.path)
+            _arr = self.rnio.read_Image_nparray(self.pfad)
             logging.info('Bild geoeffnet')
         else:
             logging.error('Dateiendung konnte nicht geoeffnet werden')
@@ -124,6 +124,7 @@ class Bild:
         #self.att['hoehe'] = np.array(self.open_image()).shape[0]
         #self.att['breite'] = np.array(self.open_image()).shape[1]
         _arr = self.open_image()
+        #_arr = _arr[0,:,:]
         return _arr
         
     def calc_totalInt(self):
@@ -232,11 +233,25 @@ class Bild:
         #Calculations
         _roi = _arr[:,flammenmitte]
         _guessMax = np.argmax(_roi)
+        #alt:
         _posMax = self.fit_Gauss(_roi, centerguess = _guessMax)
-        print _posMax
-        _posMax = _posMax[2]
-        print _posMax
         #print _posMax
+        _posMax = _posMax[2]
+        #print _posMax
+
+        #neu:
+        """
+        y = _roi
+        _max = len(y)-1
+        x = np.linspace(0,_max, len(y))
+        n = 1 #1 gauss
+        m = [_guessMax] #da nur ein gaus nur ein eintrag
+        s = [10]
+        
+        param = self.fitter.multiGaussFit(x, y, n, m, s, plotflag = False)
+        print param
+        print type(param)
+        """
         self.att['flammenhoeheGauss'] = (nullpunkt - _posMax) / aufloesung
         self.att['flammenhoeheGaussIndex'] = _posMax
         

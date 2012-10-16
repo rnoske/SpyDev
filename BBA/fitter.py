@@ -69,7 +69,7 @@ class Fitter():
             norm += [1.0/(sd*np.sqrt(2*np.pi))*np.exp(-(x[i] - mean)**2/(2*sd**2))]
         return np.array(norm)
         
-    def multiGaussFit(self, x, y, n, m, s, plotflag = True):
+    def multiGaussFit(self, x, y, n, m, s, plotflag = False):
         """ Fit n Gauss functions do data
         
         x (np.array): numpy array with x-axis
@@ -122,18 +122,22 @@ class Fitter():
         param, success = leastsq(res, p, args = (y, x))
         #print param
         
-        #result function
-        y_est = self.gauss(x, param[0], param[2])
-        for i in xrange(1, n):
-            y_est += self.gauss(x, param[i+0], param[i+2])
+        
         
         #plotting
         if plotflag == True:
+            #result function
+            y_est = self.gauss(x, param[0], param[n])
+            for i in xrange(1, n):
+                y_est += self.gauss(x, param[i+0], param[i+2])
+            
             plt.plot(x, y, label='Real Data')
             plt.plot(x, y_init, 'r.', label='Starting Guess')
             plt.plot(x, y_est, 'g.', label='Fitted')
             plt.legend()
             plt.show()
+        
+        return param
       
       
 if __name__ == "__main__":

@@ -33,43 +33,27 @@ class bilderdict:
         
         """
         for k, v in self.bdict.iteritems():
-            try:
-                v.calc_totalInt()
-                _msg = 'Total Int von ' + str(k) + ' wurde berechnet'
-                logging.debug(_msg)
-                
-            except:
-                _errmsg = 'Total Int von ' + str(k) + ' konnte nicht berechnet \
-                werden'
-                logging.error(_errmsg)
+            v.calc_totalInt()
+            _msg = 'Total Int von ' + str(k) + ' wurde berechnet'
+            logging.debug(_msg)
                 
     def calc_flammenhoehe(self):
         """ Calculate flame height for every image in the dict
         
         """
         for k, v in self.bdict.iteritems():
-            try:
-                v.calc_flammenhoehe()
-                _msg = 'Flammenhoehe von ' + str(k) + ' wurde berechnet'
-                logging.debug(_msg)
-            except:
-                _errmsg = 'Flammenhoehe von ' + str(k) + ' konnte nicht \
-                berechnet werden'
-                logging.error(_errmsg)
+            v.calc_flammenhoehe()
+            _msg = 'Flammenhoehe von ' + str(k) + ' wurde berechnet'
+            logging.debug(_msg)
                 
     def calc_flammenhoeheGauss(self):
         """ Calculate flame height with Gauss function for every image in the dict
         
         """
         for k, v in self.bdict.iteritems():
-            try:
-                v.calc_flammenhoeheGauss()
-                _msg = 'FlammenhoeheFauss von ' + str(k) + ' wurde berechnet'
-                logging.debug(_msg)
-            except:
-                _errmsg = 'FlammenhoeheGauss von ' + str(k) + ' konnte nicht \
-                berechnet werden'
-                logging.error(_errmsg)
+            v.calc_flammenhoeheGauss()
+            _msg = 'FlammenhoeheFauss von ' + str(k) + ' wurde berechnet'
+            logging.debug(_msg)
         
     def get_attList(self, attribute):
         """ Get attributes of images in the dict

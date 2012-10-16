@@ -4,10 +4,11 @@
 
 """
 #standard library imports
-import numpy as np
+import os
 import logging
 #related third party imports
-
+import numpy as np
+from PIL import Image as PILImage
 #local application/library specific imports
 
 
@@ -107,8 +108,6 @@ class RnIo():
         
         """
         filepath = self.workspace + name
-        
-        from PIL import Image as PILImage
         _image = PILImage.fromarray(nparray)
         
         if normiert == True:
@@ -123,13 +122,14 @@ class RnIo():
         filepath (str): complete filepath to Image
         
         """
-        _fp = open(filepath, 'rb')
-        from PIL import Image as PILImage
-        _img = PILImage.open(_fp)
-        #img = img.convert('L')
-        _fp.close()
-        _arr = np.array(_img)
-        return _arr
+        #with open(filepath, 'rb') as _fp:
+            #_fp = open(filepath, 'rb')
+        img = PILImage.open(filepath)
+            #_img = _img.convert('L')
+            #_fp.close()
+        #_arr = np.array(img)
+        arr = np.array(img)
+        return arr
     
                 
     def read_fits_nparray(self, name = 'test.fit', number = 0):
@@ -162,7 +162,13 @@ if __name__ == "__main__":
     print nh
     print na
     """
-    myIO= RnIo()
-    _h, _arr = myIO.read_fits_nparray()
-    print _h['temp'], _arr
-    print _arr.shape
+    #myIO= RnIo()
+    #_h, _arr = myIO.read_fits_nparray()
+    #print _h['temp'], _arr
+    #print _arr.shape
+    
+    
+    fp1 = 'C:/Python/testbilder/25927 11-16-19.bmp'
+    fp2 = 'C:\Python\testbilder\25927 11-16-19.bmp'
+    myIO = RnIo()
+    myarr = myIO.read_Image_nparray(fp1)
